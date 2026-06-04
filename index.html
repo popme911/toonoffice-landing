@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตูนออฟฟิศ | โลกแห่งจินตนาการ ที่ทุกเรื่องราวมีชีวิต</title>
+<meta name="description" content="ตูนออฟฟิศ — โลกแห่งจินตนาการ เรื่องราว และตัวละครสุดน่ารัก ร่วมเดินทางไปกับเรา ค้นพบความสนุก และสร้างสรรค์สิ่งใหม่ๆ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700;800&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FFD1DC;
+    --blue:#AEC6CF;
+    --gold:#FFD700;
+    --purple:#6A5ACD;
+    --dark:#36454F;
+    --white:#ffffff;
+    --soft:#fff8fb;
+    --shadow:0 14px 40px rgba(106,90,205,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Sarabun",sans-serif;
+    color:var(--dark);
+    background:var(--soft);
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.logo,.btn{font-family:"Prompt",sans-serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1140px;margin:0 auto;padding:0 22px;}
+  section{padding:90px 0;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky;top:0;z-index:1000;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(12px);
+    box-shadow:0 2px 18px rgba(106,90,205,.08);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1140px;margin:0 auto;}
+  .logo{font-size:1.5rem;font-weight:800;color:var(--purple);display:flex;align-items:center;gap:8px;}
+  .logo .dot{
+    width:32px;height:32px;border-radius:50%;
+    background:linear-gradient(135deg,var(--pink),var(--gold));
+    display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;
+    box-shadow:0 4px 12px rgba(255,209,220,.6);
+  }
+  .menu{display:flex;gap:30px;list-style:none;}
+  .menu a{font-weight:500;color:var(--dark);position:relative;transition:color .25s;}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--purple);transition:width .3s;}
+  .menu a:hover{color:var(--purple);}
+  .menu a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--purple);color:#fff;padding:9px 20px;border-radius:30px;font-weight:600;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(106,90,205,.4);color:#fff;}
+  .burger{display:none;background:none;border:none;font-size:1.7rem;color:var(--purple);cursor:pointer;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,209,220,.55), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(255,215,0,.4), transparent 40%),
+      radial-gradient(circle at 70% 90%, rgba(174,198,207,.5), transparent 45%),
+      linear-gradient(135deg,#fef6fb,#f3f0ff);
+    text-align:center;padding:110px 0 120px;overflow:hidden;
+  }
+  .hero-badge{
+    display:inline-block;background:#fff;color:var(--purple);font-weight:600;
+    padding:7px 18px;border-radius:30px;font-size:.9rem;margin-bottom:26px;
+    box-shadow:var(--shadow);
+  }
+  .hero h1{
+    font-size:3.2rem;font-weight:800;line-height:1.2;color:var(--dark);
+    margin-bottom:22px;max-width:880px;margin-left:auto;margin-right:auto;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(120deg,var(--purple),#ff7eb6,var(--gold));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p{font-size:1.25rem;color:var(--soft-text,#5a6670);max-width:640px;margin:0 auto 36px;}
+  .btn{
+    display:inline-block;cursor:pointer;border:none;font-weight:600;font-size:1.05rem;
+    padding:15px 38px;border-radius:40px;transition:transform .25s, box-shadow .25s, background .25s;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,var(--purple),#8a7be8);color:#fff;
+    box-shadow:0 12px 30px rgba(106,90,205,.4);
+  }
+  .btn-primary:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(106,90,205,.55);}
+  .btn-ghost{background:#fff;color:var(--purple);margin-left:12px;box-shadow:var(--shadow);}
+  .btn-ghost:hover{transform:translateY(-4px);}
+  .floaty{position:absolute;font-size:2.6rem;animation:float 6s ease-in-out infinite;opacity:.85;}
+  .f1{top:18%;left:8%;}
+  .f2{top:30%;right:10%;animation-delay:1.5s;}
+  .f3{bottom:14%;left:14%;animation-delay:.8s;}
+  .f4{bottom:22%;right:14%;animation-delay:2.2s;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-22px) rotate(6deg);}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .sec-head .kicker{color:var(--purple);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;}
+  .sec-head h2{font-size:2.3rem;font-weight:700;margin:10px 0 14px;color:var(--dark);}
+  .sec-head p{color:#5a6670;font-size:1.1rem;}
+
+  /* ===== OUR STORY ===== */
+  .story{background:var(--white);}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+  .story-art{
+    border-radius:28px;min-height:340px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,215,0,.6), transparent 50%),
+      linear-gradient(135deg,var(--pink),var(--blue));
+    display:flex;align-items:center;justify-content:center;font-size:6rem;
+    box-shadow:var(--shadow);
+  }
+  .story-text h3{font-size:1.9rem;margin-bottom:12px;color:var(--purple);}
+  .story-text .sub{font-weight:600;color:var(--dark);margin-bottom:16px;font-size:1.15rem;}
+  .story-text p{color:#5a6670;margin-bottom:18px;}
+  .story-stats{display:flex;gap:32px;margin-top:26px;}
+  .stat b{display:block;font-family:"Prompt";font-size:1.8rem;color:var(--purple);}
+  .stat span{font-size:.9rem;color:#6b7680;}
+
+  /* ===== CHARACTERS ===== */
+  .characters{background:linear-gradient(180deg,#f6f3ff,#fff);}
+  .char-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .char-card{
+    background:#fff;border-radius:24px;padding:30px 22px;text-align:center;
+    box-shadow:var(--shadow);transition:transform .35s, box-shadow .35s;
+    border:2px solid transparent;
+  }
+  .char-card:hover{transform:translateY(-12px);border-color:var(--gold);box-shadow:0 24px 50px rgba(106,90,205,.22);}
+  .char-emoji{
+    width:90px;height:90px;border-radius:50%;margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;font-size:2.8rem;
+  }
+  .c1{background:linear-gradient(135deg,var(--pink),#ffb3c8);}
+  .c2{background:linear-gradient(135deg,var(--blue),#8fb3c0);}
+  .c3{background:linear-gradient(135deg,var(--gold),#ffe680);}
+  .c4{background:linear-gradient(135deg,#c4b9ff,var(--purple));}
+  .char-card h4{font-size:1.3rem;margin-bottom:4px;color:var(--dark);}
+  .char-role{color:var(--purple);font-weight:600;font-size:.9rem;margin-bottom:12px;display:block;}
+  .char-card p{font-size:.95rem;color:#5a6670;}
+
+  /* ===== FEATURES ===== */
+  .features{background:var(--white);}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .feat-card{
+    background:var(--soft);border-radius:22px;padding:34px 28px;transition:transform .3s, box-shadow .3s;
+  }
+  .feat-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);}
+  .feat-ico{
+    width:62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;margin-bottom:18px;background:linear-gradient(135deg,var(--pink),var(--gold));
+  }
+  .feat-card:nth-child(2) .feat-ico{background:linear-gradient(135deg,var(--blue),var(--purple));}
+  .feat-card:nth-child(3) .feat-ico{background:linear-gradient(135deg,var(--gold),var(--pink));}
+  .feat-card h4{font-size:1.25rem;margin-bottom:10px;color:var(--dark);}
+  .feat-card p{color:#5a6670;font-size:.97rem;}
+
+  /* ===== CONTACT / CTA ===== */
+  .contact{
+    background:linear-gradient(135deg,var(--purple),#7d6ee0);color:#fff;text-align:center;
+    border-radius:0;
+  }
+  .contact .sec-head h2,.contact .sec-head p{color:#fff;}
+  .contact .sec-head .kicker{color:var(--gold);}
+  .socials{display:flex;gap:14px;justify-content:center;margin:30px 0;flex-wrap:wrap;}
+  .socials a{
+    background:rgba(255,255,255,.15);padding:12px 24px;border-radius:30px;font-weight:600;
+    transition:background .25s, transform .25s;color:#fff;
+  }
+  .socials a:hover{background:var(--gold);color:var(--dark);transform:translateY(-3px);}
+  .contact .mail{font-size:1.15rem;font-weight:600;color:var(--gold);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--dark);color:#cdd6dc;text-align:center;padding:34px 20px;}
+  footer .logo{justify-content:center;color:#fff;margin-bottom:10px;}
+  footer p{font-size:.92rem;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.show{opacity:1;transform:none;}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .char-grid{grid-template-columns:repeat(2,1fr);}
+    .feat-grid{grid-template-columns:1fr;}
+    .story-grid{grid-template-columns:1fr;}
+    .story-art{min-height:240px;font-size:4.5rem;}
+  }
+  @media(max-width:680px){
+    .menu{
+      position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;
+      gap:0;padding:10px 0;box-shadow:0 12px 24px rgba(0,0,0,.1);display:none;
+    }
+    .menu.open{display:flex;}
+    .menu li{padding:10px 22px;border-bottom:1px solid #f0eefb;}
+    .burger{display:block;}
+    .hero h1{font-size:2.2rem;}
+    .hero p{font-size:1.05rem;}
+    .btn-ghost{margin-left:0;margin-top:14px;}
+    .char-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header>
+  <nav>
+    <a href="#home" class="logo"><span class="dot">🎨</span>ตูนออฟฟิศ</a>
+    <ul class="menu" id="menu">
+      <li><a href="#home">หน้าแรก</a></li>
+      <li><a href="#story">เรื่องราวของเรา</a></li>
+      <li><a href="#characters">ตัวละคร</a></li>
+      <li><a href="#features">ฟีเจอร์</a></li>
+      <li><a href="#contact" class="nav-cta">ติดต่อเรา</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="เมนู">☰</button>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <span class="floaty f1">✨</span>
+  <span class="floaty f2">🌈</span>
+  <span class="floaty f3">⭐</span>
+  <span class="floaty f4">💫</span>
+  <div class="container">
+    <span class="hero-badge">🎉 ยินดีต้อนรับสู่โลกของเรา</span>
+    <h1>ตูนออฟฟิศ: <span class="grad">โลกแห่งจินตนาการ</span><br>ที่ทุกเรื่องราวมีชีวิต</h1>
+    <p>ร่วมเดินทางไปกับเรา ค้นพบความสนุก และสร้างสรรค์สิ่งใหม่ๆ ไปด้วยกันกับเหล่าตัวละครสุดน่ารักที่พร้อมเติมรอยยิ้มให้ทุกวันของคุณ</p>
+    <a href="#story" class="btn btn-primary">สำรวจโลกของเรา</a>
+    <a href="#characters" class="btn btn-ghost">พบกับตัวละคร</a>
+  </div>
+</section>
+
+<!-- ===== OUR STORY ===== -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">เรื่องราวของเรา</span>
+      <h2>จุดเริ่มต้นของความมหัศจรรย์</h2>
+      <p>จากไอเดียเล็กๆ สู่จักรวาลแห่งความสุขไม่รู้จบ</p>
+    </div>
+    <div class="story-grid">
+      <div class="story-art reveal">🏰</div>
+      <div class="story-text reveal">
+        <h3>โลกที่สร้างจากหัวใจ</h3>
+        <p class="sub">ทุกเรื่องเล่าเริ่มต้นจากความฝันเดียวกัน</p>
+        <p>ตูนออฟฟิศถือกำเนิดขึ้นจากความฝันที่จะสร้างสรรค์พื้นที่ที่เต็มไปด้วยเรื่องราวและตัวละครที่น่ารัก พร้อมที่จะมอบรอยยิ้มและแรงบันดาลใจให้กับทุกคน</p>
+        <p>เราเชื่อว่าจินตนาการไม่มีขีดจำกัด และทุกคนสมควรได้พบกับพื้นที่ที่ให้ความรู้สึกอบอุ่น สนุกสนาน และเป็นมิตรอย่างแท้จริง</p>
+        <div class="story-stats">
+          <div class="stat"><b>50+</b><span>ตัวละครน่ารัก</span></div>
+          <div class="stat"><b>120+</b><span>เรื่องราวพิเศษ</span></div>
+          <div class="stat"><b>100%</b><span>ความสนุก</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHARACTERS ===== -->
+<section class="characters" id="characters">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">พบกับตัวละคร</span>
+      <h2>เพื่อนใหม่ของคุณกำลังรออยู่</h2>
+      <p>ทำความรู้จักกับเหล่าตัวละครสุดป่วนและน่ารักที่จะมาสร้างสีสันให้วันของคุณ</p>
+    </div>
+    <div class="char-grid">
+      <div class="char-card reveal">
+        <div class="char-emoji c1">🐰</div>
+        <h4>มูจิ</h4>
+        <span class="char-role">นักฝันจอมขี้สงสัย</span>
+        <p>กระต่ายน้อยใจดีที่หลงรักการผจญภัย ชอบตั้งคำถามกับทุกสิ่งรอบตัวเสมอ</p>
+      </div>
+      <div class="char-card reveal">
+        <div class="char-emoji c2">🦊</div>
+        <h4>โฟกี้</h4>
+        <span class="char-role">ที่ปรึกษาสุดเฉลียว</span>
+        <p>จิ้งจอกแสนรู้ที่มีไอเดียบรรเจิด พร้อมช่วยแก้ปัญหาให้เพื่อนๆ ทุกเมื่อ</p>
+      </div>
+      <div class="char-card reveal">
+        <div class="char-emoji c3">🐥</div>
+        <h4>พีพี</h4>
+        <span class="char-role">เจ้าแห่งพลังบวก</span>
+        <p>เจ้านกน้อยร่าเริงที่นำพาเสียงหัวเราะไปทุกที่ ไม่เคยทำให้ใครหงอยเลย</p>
+      </div>
+      <div class="char-card reveal">
+        <div class="char-emoji c4">🐱</div>
+        <h4>ลูน่า</h4>
+        <span class="char-role">ศิลปินสายอบอุ่น</span>
+        <p>แมวเหมียวช่างฝันผู้รักงานศิลปะ มักวาดความสุขให้ทุกคนผ่านปลายพู่กัน</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">ฟีเจอร์เด่น</span>
+      <h2>มากกว่าแค่เรื่องเล่า</h2>
+      <p>สำรวจฟีเจอร์เด่นที่จะทำให้ประสบการณ์ของคุณพิเศษยิ่งขึ้น</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-ico">🎮</div>
+        <h4>เกมสนุกไม่รู้เบื่อ</h4>
+        <p>มินิเกมหลากหลายที่ออกแบบมาให้เล่นง่าย เพลิดเพลิน และเล่นได้ทุกวัยพร้อมตัวละครสุดน่ารัก</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-ico">💌</div>
+        <h4>สติ๊กเกอร์น่ารัก</h4>
+        <p>ส่งความรู้สึกผ่านสติ๊กเกอร์เอ็กซ์คลูซีฟจากเหล่าตัวละคร เติมสีสันให้ทุกบทสนทนาของคุณ</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-ico">📖</div>
+        <h4>เรื่องราวเฉพาะคุณ</h4>
+        <p>ปลดล็อกเนื้อเรื่องพิเศษและกิจกรรมตามฤดูกาล ที่ปรับให้เข้ากับสไตล์ของคุณโดยเฉพาะ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">ติดต่อเรา</span>
+      <h2>มาเป็นส่วนหนึ่งของครอบครัวเรา</h2>
+      <p>มีคำถามหรือข้อเสนอแนะ? เรายินดีเสมอที่จะพูดคุยกับคุณ</p>
+    </div>
+    <div class="socials reveal">
+      <a href="#">📘 Facebook</a>
+      <a href="#">📷 Instagram</a>
+      <a href="#">🎵 TikTok</a>
+      <a href="#">💬 LINE</a>
+    </div>
+    <p class="reveal">ส่งอีเมลมาหาเราได้ที่ <span class="mail">hello@toonoffice.com</span></p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="logo"><span class="dot">🎨</span>ตูนออฟฟิศ</div>
+  <p>© 2024 ตูนออฟฟิศ โดย CET OWNER. สงวนลิขสิทธิ์.</p>
+</footer>
+
+<script>
+  // เมนูมือถือ
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Fade-in on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
